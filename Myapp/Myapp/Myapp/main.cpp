@@ -132,24 +132,6 @@ int Answer(char *str){// 把中缀表达式变为后缀表达式并计算结果
                 stack2[++top2]=str[i];
             }
         }
-        else if(str[i] == '(')//如果str[i]是左括号则直接压入栈2
-        {
-            stack2[++top2]=str[i];
-        }
-
-        else if(str[i] == ')')//如果str[i]是右括号，则计算第一个左括号前的所有操作符，最后将此左括号直接弹出
-        {
-            while(stack2[top2] != '(')
-            {
-                a=stack2[top2--];
-                c=stack1[top1--];
-                b=stack1[top1--];
-                stack1[++top1]=Cal(a,b,c);
-                printf("\n%f%c%f=%f\n",b,a,c,stack1[top1]);
-            }
-            stack2[top2--];//弹出
-        } 
-        
         else
         {
             stack1[++top1]=str[i]-'0';
